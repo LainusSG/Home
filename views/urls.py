@@ -1,6 +1,6 @@
 from rest_framework import routers
-from views import HomeView
+from .HomeView import HomeView
 
 router = routers.DefaultRouter()
-router.register ('API/projects', HomeView, 'home')
+router.register ('HomeView/views', HomeView, 'views')
 urlpatterns = router.urls
