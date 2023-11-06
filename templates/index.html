@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BACKEND</title>
+</head>
+<body>
+    
+    <style>
+        /*----------------------Motor de trabajo----------------------*/
+        :host {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            font-size: 14px;
+            color: #333;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+          }
+
+          section{
+    height:100vh;
+    width: 100%;
+    background-position:center;
+    background-repeat: no-repeat;
+    background-size: cover;
+   background-attachment: fixed;
+}
+.image-1 {
+  background-image: url("https://www.aristegui.info/wp-content/uploads/2016/04/red-completa.jpg")
+}
+        
+        /*----------------------editar los textos o etiquetas, como el color y tamaño----------------------*/ 
+          h1 {margin: 8px; text-align:center; color: black; font-family:'Times New Roman', Times, serif; font-size: 40px}
+          h3 {margin: 8px; text-align:center; color: white; font-family:monospace; font-size: 14px}
+          h2 {margin: 8px; text-align:center; color: white; font-family:monospace;font-size: 12px}
+          h4, h5, h6 {margin: 8px 0; color: red}
+        
+        /*----------------------editar los parrafos, como el color y tamaño----------------------*/
+          p {margin: 0px; color: white; font: italic; font-size: 22px}
+        
+        /*----------------------condicion de tamaño----------------------*/
+        .spacer {flex: 1;}
+        /*----------------------modificar el baner----------------------*/
+          .toolbar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            background-color: #1976d2;
+            color: white;
+            font-weight: 600;
+          }
+        
+          .toolbar img {
+            margin: 0 16px;
+          }
+        
+        /*----------------------editar disposicion de espacios----------------------*/
+          .content {
+            display: flex;
+            margin: 82px auto 32px;
+            padding: 0 16px;
+            max-width: 960px;
+            flex-direction: column;
+            align-items: center;
+          }
+        
+          svg.material-icons {
+            height: 24px;
+            width: auto;
+          }
+        
+          svg.material-icons:not(:last-child) {
+            margin-right: 8px;
+          }
+        
+          .card svg.material-icons path {
+            fill: #888;
+          }
+        
+          .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 16px;
+          }
+        
+          .card {
+            all: unset;
+            border-radius: 4px;
+            border: 1px solid #eee;
+            background-color: #fafafa;
+            height: 40px;
+            width: 200px;
+            margin: 0 8px 16px;
+            padding: 16px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.2s ease-in-out;
+            line-height: 24px;
+          }
+        
+          .card-container .card:not(:last-child) {
+            margin-right: 0;
+          }
+        
+          .card.card-small {
+            height: 16px;
+            width: 168px;
+          }
+        
+          .card-container .card:not(.highlight-card) {
+            cursor: pointer;
+          }
+        
+          .card-container .card:not(.highlight-card):hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
+          }
+        
+          .card-container .card:not(.highlight-card):hover .material-icons path {
+            fill: rgb(105, 103, 103);
+          }
+        
+          .card.highlight-card {
+            background-color: #1976d2;
+            color: white;
+            font-weight: 600;
+            border: none;
+            width: auto;
+            min-width: 30%;
+            position: relative;
+          }
+        
+          .card.card.highlight-card span {
+            margin-left: 60px;
+          }
+        
+          svg#rocket {
+            width: 80px;
+            position: absolute;
+            left: -10px;
+            top: -24px;
+          }
+        
+          svg#rocket-smoke {
+            height: calc(100vh - 95px);
+            position: absolute;
+            top: 10px;
+            right: 180px;
+            z-index: -10;
+          }
+        
+          a,
+          a:visited,
+          a:hover {
+            color: #ffffff;
+            text-decoration: none;
+          }
+        
+          a:hover {
+            color: #ffffff;
+          }
+        
+          .terminal {
+            position: relative;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 6px;
+            padding-top: 45px;
+            margin-top: 8px;
+            overflow: hidden;
+            background-color: rgb(15, 15, 16);
+          }
+        
+          .terminal::before {
+            content: "\2022 \2022 \2022";
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: rgb(58, 58, 58);
+            color: #c2c3c4;
+            width: 100%;
+            font-size: 2rem;
+            line-height: 0;
+            padding: 14px 0;
+            text-indent: 4px;
+          }
+        
+          .terminal pre {
+            font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
+            color: white;
+            padding: 0 1rem 1rem;
+            margin: 0;
+          }
+        
+          .circle-link {
+            height: 40px;
+            width: 40px;
+            border-radius: 40px;
+            margin: 8px;
+            background-color: white;
+            border: 1px solid #eeeeee;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+            transition: 1s ease-out;
+          }
+        
+          .circle-link:hover {
+            transform: translateY(-0.25rem);
+            box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+          }
+        
+          footer {
+            margin-top: 8px;
+            display: flex;
+            align-items: center;
+            line-height: 20px;
+          }
+        
+          footer a {
+            display: flex;
+            align-items: center;
+          }
+        
+          .github-star-badge {
+            color: #24292e;
+            display: flex;
+            align-items: center;
+            font-size: 12px;
+            padding: 3px 10px;
+            border: 1px solid rgba(27,31,35,.2);
+            border-radius: 3px;
+            background-image: linear-gradient(-180deg,#fafbfc,#eff3f6 90%);
+            margin-left: 4px;
+            font-weight: 600;
+          }
+        
+          .github-star-badge:hover {
+            background-image: linear-gradient(-180deg,#f0f3f6,#e6ebf1 90%);
+            border-color: rgba(27,31,35,.35);
+            background-position: -.5em;
+          }
+        
+          .github-star-badge .material-icons {
+            height: 16px;
+            width: 16px;
+            margin-right: 4px;
+          }
+        
+          svg#clouds {
+            position: fixed;
+            bottom: -160px;
+            left: -230px;
+            z-index: -10;
+            width: 1920px;
+          }
+        
+        /*----------------------responsivas de estilo----------------------*/
+          @media screen and (max-width: 767px) {
+            .card-container > *:not(.circle-link) ,
+            .terminal {
+              width: 100%;
+            }
+        
+            .card:not(.highlight-card) {
+              height: 16px;
+              margin: 8px 0;
+            }
+        
+            .card.highlight-card span {
+              margin-left: 72px;
+            }
+        
+            svg#rocket-smoke {
+              right: 120px;
+              transform: rotate(-5deg);
+            }
+          }
+        
+          @media screen and (max-width: 575px) {
+            svg#rocket-smoke {
+              display: none;
+              visibility: hidden;
+            }
+          }
+        
+        .button {
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        text-decoration:none;
+        font-family:monospace;
+        font-size:36px;
+        font-weight:bold;
+        height:auto;
+        width:auto;
+        padding:25px 25px 25px 25px;
+        color:#ffffff;
+        background-color:#0091ff;
+        transition:all 0.3s;
+        }
+
+        .button:hover{
+        color:#0091ff;
+        background-color:#ffffff;
+        }
+        </style>
+        <section class="image-1">
+       
+        <!----------------------ajustes del banner principal---------------------->
+        <div class="toolbar" role="banner">
+          <img
+            width="60"
+            alt="Proyecto logo"
+            src="https://cdn-icons-png.flaticon.com/512/4163/4163609.png"
+          />
+          <span>Bienvenido</span>
+            <div class="spacer"></div>
+            <a aria-label="Servidor escuela 1" target="_blank" rel="noopener" href="https://www.upaep.mx/" title="UPAEP">
+            <img width="55" alt="Logo UPAEP"src="https://yt3.googleusercontent.com/tJLErJdiUGfnvjQ0fRrE-kY5YZ4nfW0fD776rey8dvu-euwjvKJ06X4Ue21_Luv0VNXyP-lMGNw=s900-c-k-c0x00ffffff-no-rj"/>
+            </a>
+            <a aria-label="Servidor escuela 2" target="_blank" rel="noopener" href="https://www.itsao.edu.mx/" title="UPAEP">
+            <img width="80" alt="Logo ITSAO"src="https://www.itsao.edu.mx/images/logos/iguana_bot.png"/>
+            </a>
+        </div>
+        
+        <div class="content" role="main">
+        
+          <!-- Resources -->
+          <h1>DESARROLLO DEL FLUJO DE AGUA CON INTERNET DE LAS COSAS PARA SMART CITIES</h1>
+          <p>UPAEP-ITSAO</p>
+          <br><br><br><br><br>
+        <!----------------------responsivas de estilo---------------------->
+        <form>
+          <a class = "button"  href = "http://127.0.0.1:8000/lecturas"> Ver lecturas </a> <br><br>
+          <a class = "button"  href = "http://127.0.0.1:8000/api"> Ver API </a>
+            
+        <router-outlet></router-outlet>
+    </section>
+</body>
+</html>
