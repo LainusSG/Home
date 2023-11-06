@@ -1,4 +1,4 @@
-from django.shortcuts import views
+from django.shortcuts import render
 
 def index(request):
-    return views(request, 'render/index.html', {})
+    return render(request, 'render/index.html', {})
