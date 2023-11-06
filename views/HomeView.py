@@ -6,9 +6,3 @@ class HomeView():
         plantilla = get_template('index.html')
         return HttpResponse (plantilla.render()) 
 
-from rest_framework import routers
-
-
-router = routers.DefaultRouter()
-router.register ('API/projects', HomeView, 'projects2')
-urlpatterns = router.urls
