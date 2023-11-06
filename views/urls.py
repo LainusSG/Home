@@ -1,6 +1,7 @@
-from rest_framework import routers
-from HomeView import HomeView
+from django.urls import path
 
-router = routers.DefaultRouter()
-router.register ('HomeView/views', HomeView.home, 'views')
-urlpatterns = router.urls
+from . import views
+
+urlpatterns = [
+    path('', views.index, name='index'),
+]
