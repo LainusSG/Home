@@ -21,8 +21,8 @@ from views.HomeView2 import HomeView2
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path ('api', include('projects.urls')),
-    path ('', HomeView.home, name ='home'),
+    path ('', include('projects.urls')),
+    path ('home', HomeView.home, name ='home'),
     path ('lecturas', HomeView2.home, name ='home')
 
 ]
