@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BACKEND</title>
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
+    <script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   
+
+
+    
+
+</head>
+<body>
+    
+    <style>
+        /*----------------------Motor de trabajo----------------------*/
+        :host {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            font-size: 14px;
+            color: #333;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+          }
+
+        
+        /*----------------------editar los textos o etiquetas, como el color y tamaño----------------------*/ 
+          h1 {margin: 8px; text-align:center; color: black; font-family:'Times New Roman', Times, serif; font-size: 40px}
+          h3 {margin: 8px; text-align:center; color: white; font-family:monospace; font-size: 14px}
+          h2 {margin: 8px; text-align:center; color: white; font-family:monospace;font-size: 12px}
+          h4, h5, h6 {margin: 8px 0; color: red}
+        
+        /*----------------------editar los parrafos, como el color y tamaño----------------------*/
+          p {margin: 0px; color: white; font: italic; font-size: 22px}
+        
+        /*----------------------condicion de tamaño----------------------*/
+        .spacer {flex: 1;}
+        /*----------------------modificar el baner----------------------*/
+          .toolbar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            background-color: #1976d2;
+            color: white;
+            font-weight: 600;
+          }
+        
+          .toolbar img {
+            margin: 0 16px;
+          }
+        
+        /*----------------------editar disposicion de espacios----------------------*/
+          .content {
+            display: flex;
+            margin: 82px auto 32px;
+            padding: 0 16px;
+            max-width: fit-content;
+            align-items: flex-start;
+          }
+        
+         
+/*----------------------barra pot----------------------*/
+.highcharts-figure .chart-container {
+    width: 450px;
+    height: 200px;
+    float: left;
+}
+
+.highcharts-figure,
+.highcharts-data-table table {
+    width: 600px;
+    margin: 0 auto;
+}
+
+.highcharts-data-table table {
+    font-family: Verdana, sans-serif;
+    border-collapse: collapse;
+    border: 1px solid #ebebeb;
+    margin: 10px auto;
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+}
+
+.highcharts-data-table caption {
+    padding: 1em 0;
+    font-size: 1.2em;
+    color: #555;
+}
+
+.highcharts-data-table th {
+    font-weight: 600;
+    padding: 0.5em;
+}
+
+.highcharts-data-table td,
+.highcharts-data-table th,
+.highcharts-data-table caption {
+    padding: 0.5em;
+}
+
+.highcharts-data-table thead tr,
+.highcharts-data-table tr:nth-child(even) {
+    background: #f8f8f8;
+}
+
+.highcharts-data-table tr:hover {
+    background: #f1f7ff;
+}
+
+@media (max-width: 600px) {
+    .highcharts-figure,
+    .highcharts-data-table table {
+        width: 100%;
+    }
+
+    .highcharts-figure .chart-container {
+        width: 300px;
+        float: none;
+        margin: 0 auto;
+    }
+}
+
+/*----------------------grafica----------------------*/
+.highcharts-figure,
+.highcharts-data-table table {
+    min-width: 360px;
+    max-width: 800px;
+    margin: 1em auto;
+}
+
+.highcharts-data-table table {
+    font-family: Verdana, sans-serif;
+    border-collapse: collapse;
+    border: 1px solid #ebebeb;
+    margin: 10px auto;
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+}
+
+.highcharts-data-table caption {
+    padding: 1em 0;
+    font-size: 1.2em;
+    color: #555;
+}
+
+.highcharts-data-table th {
+    font-weight: 600;
+    padding: 0.5em;
+}
+
+.highcharts-data-table td,
+.highcharts-data-table th,
+.highcharts-data-table caption {
+    padding: 0.5em;
+}
+
+.highcharts-data-table thead tr,
+.highcharts-data-table tr:nth-child(even) {
+    background: #f8f8f8;
+}
+
+.highcharts-data-table tr:hover {
+    background: #f1f7ff;
+}
+/*_______________________________________________________________*/
+
+        </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       
+        <!----------------------ajustes del banner principal---------------------->
+        <div class="toolbar" role="banner">
+          <img
+            width="60"
+            alt="Proyecto logo"
+            src="https://cdn-icons-png.flaticon.com/512/4163/4163609.png"
+          />
+          <span>Bienvenido</span>
+            <div class="spacer"></div>
+            <a aria-label="Servidor escuela 1" target="_blank" rel="noopener" href="https://www.upaep.mx/" title="UPAEP">
+            <img width="55" alt="Logo UPAEP"src="https://yt3.googleusercontent.com/tJLErJdiUGfnvjQ0fRrE-kY5YZ4nfW0fD776rey8dvu-euwjvKJ06X4Ue21_Luv0VNXyP-lMGNw=s900-c-k-c0x00ffffff-no-rj"/>
+            </a>
+            <a aria-label="Servidor escuela 2" target="_blank" rel="noopener" href="https://www.itsao.edu.mx/" title="UPAEP">
+            <img width="80" alt="Logo ITSAO"src="https://www.itsao.edu.mx/images/logos/iguana_bot.png"/>
+            </a>
+        </div>
+        <div class="content" role="main">
+
+
+ <!----------------------------------------------------------------------->
+
+
+ 
+
+
+
+<script>
+    
+
+    
+     
+   </script>
+
+
+
+
+
+
+ <figure class="highcharts-figure">
+    <div id="Sensor1" class="container"></div>
+</figure>
+
+<figure class="highcharts-figure">
+    <div id="Sensor2" class="container"></div>
+</figure>
+
+<figure class="highcharts-figure">
+    <div id="Sensor3" class="container"></div>
+</figure>
+
+
+<script>
+
+var chartT = new Highcharts.Chart({
+      chart:{ renderTo : 'Sensor1' },
+      title: { text: 'Lecturas sensor 1' },
+      series: [{
+        showInLegend: false,
+        data: []
+      }],
+      plotOptions: {
+        line: { animation: false,
+          dataLabels: { enabled: true }
+        },
+        series: { color: '#059e8a' }
+      },
+      xAxis: { type: 'datetime',
+        dateTimeLabelFormats: { second: '%H:%M:%S' },
+        title: { text: 'Tiempo' }
+      },
+      yAxis: {
+        title: { text: 'Valor Sensor' }
+      },
+      credits: { enabled: false }
+    });
+
+    setInterval(function ( ) {
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+        var data = JSON.parse(this.responseText);
+        date1 = data.last_value;
+        console.log (date1)
+          var x = (new Date()).getTime(),
+              y = parseFloat(date1);
+          if(chartT.series[0].data.length > 40) {
+            chartT.series[0].addPoint([x, y], true, true, true);
+          } else {
+            chartT.series[0].addPoint([x, y], true, false, true);
+          }}};
+
+      xhttp.open("GET", "https://io.adafruit.com/api/v2/LainusG/feeds/mi-primer-envio", true);
+      xhttp.send();
+    }, 1000 ) ;
+
+</script>
+
+
+<script>
+
+    var chartT2 = new Highcharts.Chart({
+          chart:{ renderTo : 'Sensor2' },
+          title: { text: 'Lecturas sensor 2' },
+          series: [{
+            showInLegend: false,
+            data: []
+          }],
+          plotOptions: {
+            line: { animation: false,
+              dataLabels: { enabled: true }
+            },
+            series: { color: '#059e8a' }
+          },
+          xAxis: { type: 'datetime',
+            dateTimeLabelFormats: { second: '%H:%M:%S' },
+            title: { text: 'Tiempo' }
+          },
+          yAxis: {
+            title: { text: 'Valor Sensor' }
+          },
+          credits: { enabled: false }
+        });
+    
+        setInterval(function ( ) {
+          var xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+            var data2 = JSON.parse(this.responseText);
+            date2 = data2.last_value;
+            console.log (date2)
+              var x = (new Date()).getTime(),
+                  y = parseFloat(date2);
+              if(chartT2.series[0].data.length > 40) {
+                chartT2.series[0].addPoint([x, y], true, true, true);
+              } else {
+                chartT2.series[0].addPoint([x, y], true, false, true);
+              }}};
+    
+          xhttp.open("GET", "https://io.adafruit.com/api/v2/LainusG/feeds/mi-segundo-envio", true);
+          xhttp.send();
+        }, 1000 ) ;
+    
+    </script>
+
+
+<script>
+
+    var chartT3 = new Highcharts.Chart({
+          chart:{ renderTo : 'Sensor3' },
+          title: { text: 'Lecturas sensor 3' },
+          series: [{
+            showInLegend: false,
+            data: []
+          }],
+          plotOptions: {
+            line: { animation: false,
+              dataLabels: { enabled: true }
+            },
+            series: { color: '#059e8a' }
+          },
+          xAxis: { type: 'datetime',
+            dateTimeLabelFormats: { second: '%H:%M:%S' },
+            title: { text: 'Tiempo' }
+          },
+          yAxis: {
+            title: { text: 'Valor Sensor' }
+          },
+          credits: { enabled: false }
+        });
+    
+        setInterval(function ( ) {
+          var xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+            var data3 = JSON.parse(this.responseText);
+            date3 = data3.last_value;
+            console.log (date3)
+              var x = (new Date()).getTime(),
+                  y = parseFloat(date3);
+              if(chartT3.series[0].data.length > 40) {
+                chartT3.series[0].addPoint([x, y], true, true, true);
+              } else {
+                chartT3.series[0].addPoint([x, y], true, false, true);
+              }}};
+    
+          xhttp.open("GET", "https://io.adafruit.com/api/v2/LainusG/feeds/mi-tercer-envio", true);
+          xhttp.send();
+        }, 1000 ) ;
+    
+    </script>
+    
+
+
+
+
+
+
+
+
+</body>
+</html>
