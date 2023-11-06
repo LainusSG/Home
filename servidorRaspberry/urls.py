@@ -22,7 +22,7 @@ from views.HomeView2 import HomeView2
 urlpatterns = [
     path('admin/', admin.site.urls),
     path ('', include('projects.urls')),
-    path ('', include('views.urls')),
+    path ('home', include('views.urls')),
  
 
 ]
